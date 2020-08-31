@@ -73,6 +73,8 @@ int main()
 
     // "123789"
 
+    // idk why this is outputting random chars. in debugging it works
+    // but fsr it doesn't output the numbers. might try and fix later
     MessageBoxA(NULL, valueString, "Message", MB_OK);
 
     std::cout << valueString << '\n';
