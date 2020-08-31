@@ -18,14 +18,8 @@ char IntToChar(int value) {
 // A function to convert an int to a string
 // (aka an array of chars)
 
-const char* IntToString(int value) {
-    // 10 is the maximum "string" length of an int32.
-    // which is something like 2147000000
-    // but the extra 1 i think is the "start address" for the array
-    char buffer[11];
-    // fill the buffer so it doesnt have random characters
-    memset(&buffer, 0, sizeof(buffer));
-
+std::string IntToString(int value) {
+    std::string buffer = std::string();
     // create a list (vector), which is sort of an array of the int values
     std::vector<int> splitValue;
 
@@ -53,7 +47,7 @@ const char* IntToString(int value) {
     for (int i = 0; i < splitValue.size(); i++) {
         // i think it's considered better practice to use
         // a vector's at function, but ill just do this as i understand it easier
-        buffer[i] = IntToChar(splitValue[i]);
+        buffer += IntToChar(splitValue[i]);
     }
 
     // i think the list might auto-clear by itself, but idk if it does
@@ -69,13 +63,7 @@ int main()
 {
     int value = 123789;
 
-    const char* valueString = IntToString(value);
-
-    // "123789"
-
-    // idk why this is outputting random chars. in debugging it works
-    // but fsr it doesn't output the numbers. might try and fix later
-    MessageBoxA(NULL, valueString, "Message", MB_OK);
+    std::string valueString = IntToString(value);
 
     std::cout << valueString << '\n';
 }
